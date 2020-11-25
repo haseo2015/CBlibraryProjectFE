@@ -1,0 +1,21 @@
+{
+  "name": "cblibraryproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd ./library-backend && npm install",
+    "start": "cd ./library-frontend && npm run serve && cd ./library-backend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haseo2015/CBlibraryProject.git"
+  },
+  "author": "Fabio Monti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haseo2015/CBlibraryProject/issues"
+  },
+  "homepage": "https://github.com/haseo2015/CBlibraryProject#readme"
+}
