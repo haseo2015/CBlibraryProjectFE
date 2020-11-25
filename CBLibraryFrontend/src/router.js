@@ -13,6 +13,11 @@ export default new Router({
       path: '/book/:id',
       name: 'BookDetail',
       component: () => import('./pages/BookDetail')
+    },
+    {
+      path: '/add-new-book/',
+      name: 'BookDetail',
+      component: () => import('./pages/BookDetail')
     }
   ]
 });

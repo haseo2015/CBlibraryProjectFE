@@ -10,6 +10,7 @@ const config = {
     path: path.join(__dirname,'dist'),
     filename: 'bundle.js'
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -51,9 +52,17 @@ const config = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new VueLoaderPlugin()
-  ],  
+  ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     publicPath: '/dist/'
