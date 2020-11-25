@@ -11,7 +11,12 @@
         <div class="field">
           <label class="label">Author</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" name="author" :value="bookdata ? bookdata.author : ''">
+            <input
+            class="input"
+            type="text"
+            placeholder="Author name"
+            name="author" 
+            :value="bookdata ? bookdata.author : ''">
           </div>
         </div>
       </form>

@@ -31,19 +31,17 @@
         </div>
       </div>
 
-
-
-
-
-              
       <div class="columns is-multiline">
+        <div class="column has-text-centered" v-if="filteredBooks.length === 0">
+          <h3>Your library is actually empty! Fill it with books!</h3>
+        </div>
         <div class="column is-half is-one-third-desktop"
-        v-for="(book, index) of filteredBooks"
-        :key="index">
-        <BookCard
-          :bookdata="book"
-          :onClickButtonDelete="onClickButtonDelete"
-        />
+          v-for="(book, index) of filteredBooks"
+          :key="index">
+            <BookCard
+              :bookdata="book"
+              :onClickButtonDelete="onClickButtonDelete"
+            />
         </div>
       </div>
     </div>
@@ -92,8 +90,7 @@ export default {
   watch: {
     searchString () {
       if (this.searchString !== '' && this.searchString.length > 0) {
-      this.filteredBooks = this.books.filter(book => (book.title.toLowerCase().includes(this.searchString.toLowerCase()) || book.author.toLowerCase().includes(this.searchString.toLowerCase())))
-      // console.log(this.searchString, this.filteredBooks)
+        this.filteredBooks = this.books.filter(book => (book.title.toLowerCase().includes(this.searchString.toLowerCase()) || book.author.toLowerCase().includes(this.searchString.toLowerCase())))
       } else {
         this.filteredBooks = this.books
       }
