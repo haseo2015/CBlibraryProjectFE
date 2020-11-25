@@ -20,7 +20,9 @@ let booksRef = database.ref('/books/');
 router.get('/', async (req, res, next) => {
   const allBooks = await booksRef.once('value')
   .then(snapshot => {
-    return Object.entries(snapshot.val()).map(e => Object.assign(e[1], { key: e[0] }))
+    return snapshot.val() === null 
+    ? []
+    : Object.entries(snapshot.val()).map(e => Object.assign(e[1], { key: e[0] }))
   });
   // console.log(allBooks)
   res.send(allBooks);
