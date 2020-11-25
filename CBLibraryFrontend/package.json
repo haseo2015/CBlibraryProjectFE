@@ -11,7 +11,7 @@
     "dev": "webpack serve",
     "build": "webpack --mode production",
     "test": "jest",
-    "start": "nodemon dist/index.html",
+    "start": "node server.js",
     "cypress:open": "cypress open"
   },
   "devDependencies": {
