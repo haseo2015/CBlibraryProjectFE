@@ -5,7 +5,12 @@
         <div class="field">
           <label class="label">Title</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" name="title" :value="bookdata ? bookdata.title : ''">
+            <input
+              class="input"
+              type="text"
+              placeholder="Book title"
+              name="title"
+              :value="bookdata ? bookdata.title : ''">
           </div>
         </div>
         <div class="field">

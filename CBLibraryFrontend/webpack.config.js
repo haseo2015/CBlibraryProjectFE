@@ -6,6 +6,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
   entry: './src/index.js',
+  node: {
+    global: true
+  },
   output: {
     path: path.join(__dirname,'dist'),
     filename: 'bundle.js'
@@ -38,7 +41,6 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -46,6 +48,10 @@ const config = {
     ]
   },
   resolve: {
+    fallback: {
+      fs: false,
+      util: false
+    },
     extensions: [
       '.js',
       '.vue'

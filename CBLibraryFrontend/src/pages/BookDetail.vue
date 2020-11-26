@@ -28,6 +28,8 @@ export default {
       const api_url = this.$route.params.id 
         ? `http://localhost:3000/books/update/${this.$route.params.id}`
         : `http://localhost:3000/books/new`
+      const action =  this.$route.params.id ? 'edit' : 'create';
+
 
       fetch(api_url, {
         method: this.$route.params.id ? 'PUT' : 'POST',
@@ -36,14 +38,16 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 200) this.$router.push('/')
-      });
+      })
+      .catch(error => alert(`Error while ${action} post: ${error.message}`));
     },
   },
   beforeCreate () {
     if (this.$route.params.id) {
       fetch(`http://localhost:3000/books/edit/${this.$route.params.id}`)
         .then(response => response.json())
-        .then(data => this.bookdata = data);
+        .then(data => this.bookdata = data)
+        .catch(error => alert(`Error while fetch post`));
     }
   }
 }

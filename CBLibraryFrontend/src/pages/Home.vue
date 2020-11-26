@@ -68,7 +68,7 @@ export default {
       fetch(`http://localhost:3000/books/delete/${index}`)
       .then(response => response.json())
       .then(data => this.fetchBooks())
-      .catch(error => console.warn(error));
+      .catch(error => alert(`Error while ${action} post: ${error.message}`));
     },
     onClickFilter (dir) {
       this.filteredBooks = this.filteredBooks.sort((a,b) => {
@@ -81,7 +81,7 @@ export default {
       fetch('http://localhost:3000/books')
       .then(response => response.json())
       .then(data => this.books = this.filteredBooks = data)
-      .catch(error => console.warn('Error while fetch', error));
+      .catch(error => alert('Error while fetch', error));
     }
   },
   created () {

@@ -39,6 +39,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "bulma": "^0.9.1"
+    "bulma": "^0.9.1",
+    "fs": "^0.0.1-security",
+    "shared-log": "file:..\\shared"
   }
 }
