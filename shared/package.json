@@ -1,13 +1,11 @@
 {
-  "name": "shared",
+  "name": "shared-log",
   "version": "1.0.0",
-  "description": "shared libraries",
+  "description": "shared-log libraries",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
-  "author": "FMonti",
-  "license": "ISC",
-  "dependencies": {    
-  }
+  "author": "fmonti",
+  "license": "ISC"
 }
