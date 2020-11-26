@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const firebase = require("firebase/app");
 const db = require("firebase/database");
-const logger = require('../../shared');
-
+const logger = require('shared');
 
 const firebaseConfig = {
     apiKey: "AIzaSyD8H0H-bZAG5dgNgZ2t-YOXvsb538Xs9Mc",
@@ -13,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "mypersonallibrary-4a2c9.appspot.com",
     messagingSenderId: "947904269854",
     appId: "1:947904269854:web:8dd1e6ab9c55a752ce280f"
-  };
+};
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
@@ -47,8 +46,8 @@ router.put('/update/(:id)', (req, res, next) => {
   const bookID = req.params.id;
   const params = req.body;
   const esito = updateBook(bookID, params);
-  console.log(esito ? `Updated book ${bookID} successfully` : 'Error during update')
-  console.log(res.statusCode, res.statusMessage)
+  // console.log(esito ? `Updated book ${bookID} successfully` : 'Error during update')
+  // console.log(res.statusCode, res.statusMessage)
   res.send({ status: res.statusCode, message: 'ok'})
 });
 
@@ -71,7 +70,7 @@ const addNewBook = async (title, author) => {
   })
   .then(() => esito = true)
   .catch(error => {
-    console.log(error)
+    callback(error)
   });
 
   return esito
@@ -83,7 +82,7 @@ const removeBook = async (id) => {
   bookToRemove.remove()
   .then(() => esito = true)
   .catch(error => {
-    console.log(error)
+    callback(error)
   });
   return esito
 }
@@ -95,7 +94,7 @@ const updateBook = async (id, params) => {
   .set({ ...params, creation_date })
   .then(() => eisto = true)
   .catch(error => {
-    console.log(error)
+    callback(error)
   });
 
   return esito
@@ -105,25 +104,25 @@ const getBook = async (id) => {
   return await database.ref('/books/' + id)
     .once('value')
     .then(snapshot => snapshot.val())
-    .catch(error => console.log(error));
+    .catch(error => callback(error));
 }
 
 let logMessage;
 
 booksRef.on('child_added', (snapshot) => {
-  console.log('child_added', snapshot.key, snapshot.val())
+  // console.log('child_added', snapshot.key, snapshot.val())
   logMessage = `child_added ${snapshot.key}`
   logger.writeLog(logMessage);
 })
 
 booksRef.on('child_changed', (snapshot) => {
-  console.log('child_changed', snapshot.key, snapshot.val())
+  // console.log('child_changed', snapshot.key, snapshot.val())
   logMessage = `child_changed ${snapshot.key}`
   logger.writeLog(logMessage);
 })
 
 booksRef.on('child_removed', (snapshot) => {
-  console.log('child_removed', snapshot.key, snapshot.val())
+  // console.log('child_removed', snapshot.key, snapshot.val())
   logMessage = `child_removed ${snapshot.key}`
   logger.writeLog(logMessage);
 })
