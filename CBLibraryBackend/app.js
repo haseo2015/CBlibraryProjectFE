@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 // MyShared Library
-const logger = require('shared');
+const logger = require('shared-log');
 
 logger.initLog()
 

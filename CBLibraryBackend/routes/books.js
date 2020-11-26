@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const firebase = require("firebase/app");
 const db = require("firebase/database");
-const logger = require('shared');
+const logger = require('shared-log');
 
 const firebaseConfig = {
     apiKey: "AIzaSyD8H0H-bZAG5dgNgZ2t-YOXvsb538Xs9Mc",
