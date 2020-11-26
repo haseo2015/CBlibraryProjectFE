@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const firebase = require("firebase/app");
 const db = require("firebase/database");
+const logger = require('../../shared');
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyD8H0H-bZAG5dgNgZ2t-YOXvsb538Xs9Mc",
@@ -57,8 +59,6 @@ router.get('/delete/(:id)', (req, res, next) => {
   res.send({ status: res.statusCode, message: 'deleted'})
 });
 
-
-
 const addNewBook = async (title, author) => {
   const creation_date = new Date().toISOString();
   let esito = false;
@@ -108,14 +108,24 @@ const getBook = async (id) => {
     .catch(error => console.log(error));
 }
 
+let logMessage;
+
 booksRef.on('child_added', (snapshot) => {
   console.log('child_added', snapshot.key, snapshot.val())
+  logMessage = `child_added ${snapshot.key}`
+  logger.writeLog(logMessage);
 })
+
 booksRef.on('child_changed', (snapshot) => {
   console.log('child_changed', snapshot.key, snapshot.val())
+  logMessage = `child_changed ${snapshot.key}`
+  logger.writeLog(logMessage);
 })
+
 booksRef.on('child_removed', (snapshot) => {
   console.log('child_removed', snapshot.key, snapshot.val())
+  logMessage = `child_removed ${snapshot.key}`
+  logger.writeLog(logMessage);
 })
 
 module.exports = router;
