@@ -29,12 +29,12 @@ router.get('/', async (req, res, next) => {
   res.send(allBooks);
 });
 
-router.post('/new', (req, res, next) => {
+router.post('/new', async (req, res, next) => {
   let title = req.body.title;
   let author = req.body.author;
-  const esito = addNewBook(title, author)
+  const esito = await addNewBook(title, author)
   // res.send(esito ? 'YAY! New book added successfully': 'Ops! Error during creation');
-  res.send({ status: res.statusCode, message: 'ok'})
+  res.send({ status: res.statusCode, message: esito})
 });
 
 router.get('/edit/(:id)', async (req, res, next) => {
@@ -60,20 +60,17 @@ router.get('/delete/(:id)', (req, res, next) => {
 
 const addNewBook = async (title, author) => {
   const creation_date = new Date().toISOString();
-  let esito = false;
-
   let newBookRef = booksRef.push();
-  newBookRef.set({
+  let newKey = newBookRef.key;
+
+  await newBookRef.set({
     title,
     author,
     creation_date
   })
-  .then(() => esito = true)
-  .catch(error => {
-    callback(error)
-  });
+  
+  return newKey;
 
-  return esito
 }
 
 const removeBook = async (id) => {
