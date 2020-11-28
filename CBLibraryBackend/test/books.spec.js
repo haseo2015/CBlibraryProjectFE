@@ -2,9 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require("sinon");
 const app = require('../app');
-// const firebase = require('../database');
-// const database = firebase.database();
-// let booksRef = database.ref('/books/');
 
 chai.use(chaiHttp);
 chai.should();
@@ -63,44 +60,4 @@ describe('Books Router', () => {
       });
     });
   });
-
-  describe('PUT /update', () => {
-    it("should add and edit a book", (done) => {
-      const bookData = {
-        title: 'My Sample book',
-        author: 'My Author'
-      }
-      let key = ''
-      chai.request(app)
-      .post('/books/new')
-      .send(bookData)
-      .end((err, res) => {
-        res.should.have.status(200);
-        key = res.body.message
-      });
-
-      const newbookData = {
-        title: 'My Super book ',
-        author: 'My Super Author'
-      }
-      chai.request(app)
-      .post(`/books/update/${key}`)
-      .send(newbookData)
-      .end();
-
-      chai.request(app)
-      .get(`/books/edit/${key}`)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.title.should.be.equal(newbookData.title);
-        res.body.author.should.be.equal(newbookData.author);
-        done();
-      });
-
-    });
-  });
-
-
-
-
 });

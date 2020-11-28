@@ -1,27 +1,42 @@
 {
   "name": "library-backend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "main": "index.js",
+  "description": "",
+  "keywords": [],
+  "author": "Fmonti",
+  "license": "ISC",
   "scripts": {
     "start": "nodemon ./app.js",
-    "test": "nyc mocha --reporter spec"
+    "test": "nyc mocha --reporter spec",
+    "dev": "npm start",
+    "build": "webpack --mode production"
   },
   "dependencies": {
-    "chai-http": "^4.3.0",
+    "shared-log": "file:..\\shared"
+  },
+  "devDependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "firebase": "^8.1.1",
     "nodemon": "^2.0.6",
-    "shared-log": "file:..\\shared"
-  },
-  "devDependencies": {
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2",
+    "chai-http": "^4.3.0",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.1",
     "chai": "^4.2.0",
+    "eslint": "^7.14.0",
     "firebase-functions-test": "^0.2.3",
     "jest": "^26.6.3",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "sinon": "^9.2.1",
-    "supertest": "^6.0.1"
+    "supertest": "^6.0.1",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
   }
 }
