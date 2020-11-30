@@ -9,11 +9,11 @@ exports.initLog = initLog;
 exports.writeLog = writeLog;
 
 function initLog () {
-  log_file = fs.createWriteStream(__dirname + `/${logName}`, {flags : 'w'});
+  log_file = fs.createWriteStream(`./${logName}`, {flags : 'w'});
 };
 
 function writeLog (info) { 
-  if (fs.existsSync(__dirname + `/${logName}`)) {
+  if (fs.existsSync(`./${logName}`)) {
     log_file.write(util.format(`${logDate} - ${info}`) + '\n');
   } else {
     logger.initLog()
