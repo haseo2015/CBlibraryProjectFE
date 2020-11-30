@@ -2,7 +2,7 @@
   "name": "shared-log",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [],
   "author": "fmonti",
   "license": "ISC",
@@ -11,15 +11,13 @@
     "build": "webpack --mode production",
     "test": "nyc mocha --reporter spec"
   },
-  "dependencies": {
-    "chai-fs": "^2.0.0",
-    "webpack-node-externals": "^2.5.2"
-  },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",
+    "chai-fs": "^2.0.0",
+    "webpack-node-externals": "^2.5.2",
     "eslint": "^7.14.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
