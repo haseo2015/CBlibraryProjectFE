@@ -6,9 +6,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
   entry: './src/index.js',
-  node: {
-    global: true
-  },
   output: {
     path: path.join(__dirname,'dist'),
     filename: 'bundle.js'

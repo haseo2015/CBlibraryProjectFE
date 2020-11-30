@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">Edit book <router-link to="/"><span class="icon icon big">⬏</span></router-link></h1>
+      <h1 class="title">{{ $route.params.id ? 'Edit book' : 'Add new book' }} <router-link to="/"><span class="icon icon big">⬏</span></router-link></h1>
       
       <h2 class="subtitle"></h2>
       <BookForm
